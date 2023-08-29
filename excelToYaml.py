@@ -63,11 +63,11 @@ def convert_to_yaml(df):
         # Build a node only if the node already does not exist in the dictionary, Note there should be a value for Node always and ever. No Node name just send a error message, must provide node name
         if pd.notnull(term_group_name):
             if term_group_name not in nodes:
-                #node_id = str(uuid.uuid4())
+                node_id = str(uuid.uuid4())
                 node_data = {
                     "name": term_group_name,
                     "description": term_group_description if pd.notnull(term_group_description) else term_group_name,
-                    #"id": node_id,
+                    "id": node_id,
                     "owners": {
                         "users": term_group_owner_user.replace('; ',';').split(';') if pd.notnull(term_group_owner_user) else []
                     },
@@ -87,11 +87,11 @@ def convert_to_yaml(df):
         # Build a sub node object only if the sub node already does not exist in the dictionary and only if Sub node present
         if pd.notnull(term_sub_group_name):
             if term_sub_group_name not in sub_nodes:
-                #sub_node_id = str(uuid.uuid4())
+                sub_node_id = str(uuid.uuid4())
                 sub_node_data = {
                     "name": term_sub_group_name,
                     "description": term_sub_group_description if pd.notnull(term_sub_group_description) else term_sub_group_name,
-                    #"id": sub_node_id,
+                    "id": sub_node_id,
                     "owners": {
                         "users": term_sub_group_owner_user.replace('; ',';').split(';') if pd.notnull(term_sub_group_owner_user) else []
                     },
@@ -106,7 +106,7 @@ def convert_to_yaml(df):
             term_data = {
                 "name": term_name,
                 "description": term_description if pd.notnull(term_description) else term_name,
-                #"id": str(uuid.uuid4()),
+                "id": str(uuid.uuid4()),
                 "owners": {
                     "users": term_owner_user.replace('; ',';').split(';') if pd.notnull(term_owner_user) else []
                 },
